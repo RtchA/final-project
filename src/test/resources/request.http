@@ -1,0 +1,80 @@
+### Получение всех пользователей (для админа)
+GET http://localhost:8080/users.getAll?limit=50&offset=0
+X-login: Admin
+X-Password: AdminPassword
+
+### Регистрация пользователя
+GET http://localhost:8080/users.register?login=John&password=secret
+
+### Получение информации о себе (пользователь)
+GET http://localhost:8080/users.me
+X-login:Chris
+X-password:password
+
+### Получение информации о себе (неавторизованный пользователь)
+GET http://localhost:8080/users.me
+
+### Админ может удалить пользователя
+GET http://localhost:8080/users.removeById?id=3
+X-login:Admin
+X-password:AdminPassword
+
+### Восстановить пользователя (админ, пользователь)
+GET http://localhost:8080/users.restoreById?id=3
+X-login:Admin
+X-password:AdminPassword
+
+
+
+
+### Любой пользователь получает весь список фильмов
+GET http://localhost:8080/movies.getAll?limit=50&offset=0
+
+### Любой пользователь может получить любой фильм по id
+GET http://localhost:8080/movies.getById?id=1
+
+### Админ может добавлять фильм в базу
+GET http://localhost:8080/movies.create?name=Thor&description=desc&file=file.mp4&preview=pre.mp4&genre=action&dateRelease=2017&price=1000
+X-login: Admin
+X-Password: AdminPassword
+
+### Админ может обновлять информацию о фильмах
+GET http://localhost:8080/movies.update?id=3&name=Thor2&description=AnotherMovie&preview=Thor2.mp4&file=Thor2-full.mp4&genre=Comedy&dateRelease=2022&price=1000
+X-login: Admin
+X-Password: AdminPassword
+
+### Админ может удалять фильмы
+GET http://localhost:8080/movies.removeById?id=2
+X-login: Scarlett
+X-Password: password
+
+### Админ может восстановить фильм
+GET http://localhost:8080/movies.restoreById?id=2
+X-login: Admin
+X-Password: AdminPassword
+
+### Админ может просмотреть список удаленных фильмов
+GET http://localhost:8080/movies.getAllRemoved?limit=50&offset=0
+X-login: Admin
+X-Password: AdminPassword
+
+### Пользователь покупает фильм
+GET http://localhost:8080/movies.buy?id=4
+X-login:Scarlett
+X-Password:password
+
+### Пользователь получает список купленных фильмов
+GET http://localhost:8080/library.getAll?limit=50&offset=0
+X-login:Scarlett
+X-Password:password
+
+
+
+### Загрузка файлов
+POST http://localhost:8080/media/bytes
+Content-Type: image/jpeg
+
+< Defender.jpg
+
+### Просмотр загруженных файлов
+GET http://localhost:8080/de807425-42a5-4101-9f23-72fcf6ddadb6.jpg
